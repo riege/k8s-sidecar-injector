@@ -1,0 +1,18 @@
+[
+  {
+    "op": "add",
+    "path": "/spec/containers/0/envFrom",
+    "value": [
+      {
+        "secretRef": {
+          "name": "mysecret"
+        }
+      }
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/metadata/annotations/injector.unittest.com~1status",
+    "value": "injected"
+  }
+]

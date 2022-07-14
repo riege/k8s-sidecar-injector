@@ -14,6 +14,7 @@ type ConfigExpectation struct {
 	// Path is the path to the YAML to load the sidecar yaml from
 	Path               string
 	EnvCount           int
+	EnvFromCount       int
 	ContainerCount     int
 	VolumeCount        int
 	VolumeMountCount   int

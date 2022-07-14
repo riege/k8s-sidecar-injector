@@ -26,6 +26,7 @@ var (
 	obj2latest       = "test/fixtures/k8s/object2latest.yaml"
 	obj2v            = "test/fixtures/k8s/object2v.yaml"
 	env1             = "test/fixtures/k8s/env1.yaml"
+	envFrom          = "test/fixtures/k8s/envfrom1.yaml"
 	obj3Missing      = "test/fixtures/k8s/object3-missing.yaml"
 	obj4             = "test/fixtures/k8s/object4.yaml"
 	obj5             = "test/fixtures/k8s/object5.yaml"
@@ -44,6 +45,7 @@ var (
 		{configuration: obj2latest, expectedSidecar: "", expectedError: ErrRequestedSidecarNotFound},
 		{configuration: obj2v, expectedSidecar: "complex-sidecar:v420.69"},
 		{configuration: env1, expectedSidecar: "env1:latest"},
+		{configuration: envFrom, expectedSidecar: "envfrom1:latest"},
 		{configuration: obj3Missing, expectedSidecar: "", expectedError: ErrMissingRequestAnnotation}, // this one is missing any annotations :)
 		{configuration: obj4, expectedSidecar: "", expectedError: ErrSkipAlreadyInjected},             // this one is already injected, so it should not get injected again
 		{configuration: obj5, expectedSidecar: "volume-mounts:latest"},
@@ -60,6 +62,8 @@ var (
 		{name: "missing-sidecar-config", allowed: true, patchExpected: false},
 		{name: "sidecar-test-1", allowed: true, patchExpected: true},
 		{name: "env-override", allowed: true, patchExpected: true},
+		{name: "envfrom-first", allowed: true, patchExpected: true},
+		{name: "envfrom-second", allowed: true, patchExpected: true},
 		{name: "service-account", allowed: true, patchExpected: true},
 		{name: "service-account-already-set", allowed: true, patchExpected: true},
 		{name: "service-account-set-default", allowed: true, patchExpected: true},

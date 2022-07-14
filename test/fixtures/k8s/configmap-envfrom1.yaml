@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-env-from
+  namespace: default
+data:
+  test-envfrom1: |
+    name: envfrom1
+    envFrom:
+      - secretRef:
+          name: mysecret
