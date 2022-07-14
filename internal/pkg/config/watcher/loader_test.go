@@ -27,6 +27,21 @@ var (
 				Path:               fixtureSidecarsDir + "/env1.yaml",
 				VolumeCount:        0,
 				EnvCount:           3,
+				EnvFromCount:       0,
+				ContainerCount:     0,
+				VolumeMountCount:   0,
+				HostAliasCount:     0,
+				InitContainerCount: 0,
+			},
+		},
+		"configmap-envfrom1": []testhelper.ConfigExpectation{
+			testhelper.ConfigExpectation{
+				Name:               "envfrom1",
+				Version:            "latest",
+				Path:               fixtureSidecarsDir + "/envfrom1.yaml",
+				VolumeCount:        0,
+				EnvCount:           0,
+				EnvFromCount:       1,
 				ContainerCount:     0,
 				VolumeMountCount:   0,
 				HostAliasCount:     0,
@@ -40,6 +55,7 @@ var (
 				Path:               fixtureSidecarsDir + "/sidecar-test.yaml",
 				VolumeCount:        1,
 				EnvCount:           2,
+				EnvFromCount:       0,
 				ContainerCount:     2,
 				VolumeMountCount:   0,
 				HostAliasCount:     0,
@@ -53,6 +69,7 @@ var (
 				Path:               fixtureSidecarsDir + "/complex-sidecar.yaml",
 				VolumeCount:        1,
 				EnvCount:           0,
+				EnvFromCount:       0,
 				ContainerCount:     4,
 				VolumeMountCount:   0,
 				HostAliasCount:     0,
@@ -66,6 +83,7 @@ var (
 				Path:               fixtureSidecarsDir + "/env1.yaml",
 				VolumeCount:        0,
 				EnvCount:           3,
+				EnvFromCount:       0,
 				ContainerCount:     0,
 				VolumeMountCount:   0,
 				HostAliasCount:     0,
@@ -77,6 +95,7 @@ var (
 				Path:               fixtureSidecarsDir + "/sidecar-test.yaml",
 				VolumeCount:        1,
 				EnvCount:           2,
+				EnvFromCount:       0,
 				ContainerCount:     2,
 				VolumeMountCount:   0,
 				HostAliasCount:     0,
@@ -90,6 +109,7 @@ var (
 				Path:               fixtureSidecarsDir + "/volume-mounts.yaml",
 				VolumeCount:        2,
 				EnvCount:           2,
+				EnvFromCount:       0,
 				ContainerCount:     3,
 				VolumeMountCount:   1,
 				HostAliasCount:     0,
@@ -103,6 +123,7 @@ var (
 				Path:               fixtureSidecarsDir + "/host-aliases.yaml",
 				VolumeCount:        0,
 				EnvCount:           2,
+				EnvFromCount:       0,
 				ContainerCount:     1,
 				VolumeMountCount:   0,
 				HostAliasCount:     6,
@@ -127,6 +148,7 @@ var (
 				Path:               fixtureSidecarsDir + "/init-containers.yaml",
 				VolumeCount:        0,
 				EnvCount:           0,
+				EnvFromCount:       0,
 				ContainerCount:     2,
 				VolumeMountCount:   0,
 				HostAliasCount:     0,
@@ -203,6 +225,9 @@ func TestLoadFromConfigMap(t *testing.T) {
 			}
 			if len(ic.Environment) != expectedICF.EnvCount {
 				t.Fatalf("expected %d environment variables in %s, but found %d", expectedICF.EnvCount, expectedICF.Path, len(ic.Environment))
+			}
+			if len(ic.EnvFrom) != expectedICF.EnvFromCount {
+				t.Fatalf("expected %d envFrom specs in %s, but found %d", expectedICF.EnvFromCount, expectedICF.Path, len(ic.EnvFrom))
 			}
 			if len(ic.Containers) != expectedICF.ContainerCount {
 				t.Fatalf("expected %d containers in %s, but found %d", expectedICF.ContainerCount, expectedICF.Path, len(ic.Containers))

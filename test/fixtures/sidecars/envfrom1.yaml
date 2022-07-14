@@ -1,0 +1,5 @@
+---
+name: envfrom1
+envFrom:
+  - secretRef:
+      name: mysecret

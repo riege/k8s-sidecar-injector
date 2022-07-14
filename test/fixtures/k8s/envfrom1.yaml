@@ -1,0 +1,4 @@
+name: object1
+namespace: unittest
+annotations:
+  "injector.unittest.com/request": "envfrom1"

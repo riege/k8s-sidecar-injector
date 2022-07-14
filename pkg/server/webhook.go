@@ -210,6 +210,31 @@ func setEnvironment(target []corev1.Container, addedEnv []corev1.EnvVar, basePat
 	return patch
 }
 
+func setEnvFrom(target []corev1.Container, addedEnvFrom []corev1.EnvFromSource, basePath string) (patch []patchOperation) {
+	var value interface{}
+	for containerIndex, container := range target {
+		// for each container in the spec add each envFrom spec
+		first := len(container.EnvFrom) == 0
+		for _, add := range addedEnvFrom {
+			podPath := fmt.Sprintf("%s/%d/envFrom", basePath, containerIndex)
+			// make a patch
+			value = add
+			if first {
+				first = false
+				value = []corev1.EnvFromSource{add}
+			} else {
+				podPath = podPath + "/-"
+			}
+			patch = append(patch, patchOperation{
+				Op:    "add",
+				Path:  podPath,
+				Value: value,
+			})
+		}
+	}
+	return patch
+}
+
 func addContainers(target, added []corev1.Container, basePath string) (patch []patchOperation) {
 	first := len(target) == 0
 	var value interface{}
@@ -459,6 +484,7 @@ func createPatch(pod *corev1.Pod, inj *config.InjectionConfig, annotations map[s
 	{ // initcontainer injections
 		// patch all existing InitContainers with the VolumeMounts+EnvVars, and add injected initcontainers
 		patch = append(patch, setEnvironment(pod.Spec.InitContainers, inj.Environment, "/spec/initContainers")...)
+		patch = append(patch, setEnvFrom(pod.Spec.InitContainers, inj.EnvFrom, "/spec/initContainers")...)
 		patch = append(patch, addVolumeMounts(pod.Spec.InitContainers, inj.VolumeMounts, "/spec/initContainers")...)
 		// next, make sure any injected init containers in our config get the EnvVars and VolumeMounts injected
 		// this mutates inj.InitContainers with our environment vars
@@ -470,6 +496,7 @@ func createPatch(pod *corev1.Pod, inj *config.InjectionConfig, annotations map[s
 	{ // container injections
 		// now, patch all existing containers with the env vars and volume mounts, and add injected containers
 		patch = append(patch, setEnvironment(pod.Spec.Containers, inj.Environment, "/spec/containers")...)
+		patch = append(patch, setEnvFrom(pod.Spec.Containers, inj.EnvFrom, "/spec/containers")...)
 		patch = append(patch, addVolumeMounts(pod.Spec.Containers, inj.VolumeMounts, "/spec/containers")...)
 		// first, make sure any injected containers in our config get the EnvVars and VolumeMounts injected
 		// this mutates inj.Containers with our environment vars
