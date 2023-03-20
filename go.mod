@@ -9,7 +9,7 @@ require (
 	github.com/gorilla/handlers v1.4.2
 	github.com/gorilla/mux v1.7.4
 	github.com/imdario/mergo v0.3.11 // indirect
-	github.com/nsf/jsondiff v0.0.0-20200515183724-f29ed568f4ce
+	github.com/nsf/jsondiff v0.0.0-20210926074059-1e845ec5d249
 	github.com/prometheus/client_golang v1.7.1
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d // indirect
 	golang.org/x/sys v0.0.0-20220712014510-0a85c31ab51e // indirect
