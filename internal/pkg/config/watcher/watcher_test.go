@@ -7,7 +7,7 @@ import (
 	testcore "k8s.io/client-go/testing"
 	"testing"
 
-	_ "github.com/tumblr/k8s-sidecar-injector/internal/pkg/testing"
+	_ "github.com/riege/k8s-sidecar-injector/internal/pkg/testing"
 	"k8s.io/client-go/kubernetes/fake"
 )
 

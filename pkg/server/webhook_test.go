@@ -11,8 +11,8 @@ import (
 
 	"github.com/ghodss/yaml"
 	"github.com/nsf/jsondiff" // for json diffing patches
-	"github.com/tumblr/k8s-sidecar-injector/internal/pkg/config"
-	_ "github.com/tumblr/k8s-sidecar-injector/internal/pkg/testing"
+	"github.com/riege/k8s-sidecar-injector/internal/pkg/config"
+	_ "github.com/riege/k8s-sidecar-injector/internal/pkg/testing"
 	v1 "k8s.io/api/admission/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )

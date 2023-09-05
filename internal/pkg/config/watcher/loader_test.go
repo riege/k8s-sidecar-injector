@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tumblr/k8s-sidecar-injector/internal/pkg/config"
-	testhelper "github.com/tumblr/k8s-sidecar-injector/internal/pkg/testing"
+	"github.com/riege/k8s-sidecar-injector/internal/pkg/config"
+	testhelper "github.com/riege/k8s-sidecar-injector/internal/pkg/testing"
 	"gopkg.in/yaml.v2"
 	"k8s.io/api/core/v1"
 )
