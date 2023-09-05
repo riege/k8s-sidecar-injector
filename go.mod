@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/dyson/certman v0.2.1
 	github.com/ghodss/yaml v1.0.0
-	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+	github.com/golang/glog v1.1.2
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/imdario/mergo v0.3.11 // indirect
