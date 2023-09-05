@@ -13,7 +13,7 @@ COPY . .
 RUN go mod vendor
 RUN make test all 
 
-FROM alpine:latest
+FROM alpine:3.18.3
 ENV TLS_PORT=9443 \
     LIFECYCLE_PORT=9000 \
     TLS_CERT_FILE=/var/lib/secrets/cert.crt \
