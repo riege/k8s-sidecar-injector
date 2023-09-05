@@ -6,7 +6,7 @@ require (
 	github.com/dyson/certman v0.2.1
 	github.com/ghodss/yaml v1.0.0
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
-	github.com/gorilla/handlers v1.4.2
+	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/imdario/mergo v0.3.11 // indirect
 	github.com/nsf/jsondiff v0.0.0-20230430225905-43f6cf3098c1
