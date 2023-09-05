@@ -1,5 +1,4 @@
-ARG GO_VERSION=1.15.0
-FROM golang:${GO_VERSION}-alpine
+FROM golang:1.15.0-alpine
 
 RUN apk --no-cache add \
   ca-certificates \
