@@ -23,3 +23,5 @@ ENV TLS_PORT=9443 \
 COPY --from=0 /usr/local/bin/cmd /bin/k8s-sidecar-injector
 COPY ./conf /conf
 COPY ./entrypoint.sh /bin/entrypoint.sh
+
+USER 1001
