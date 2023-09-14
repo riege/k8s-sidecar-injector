@@ -1,8 +1,16 @@
-/vendor
-/.gopath~
-/bin
-Jenkinsfile
-Dockerfile
-README.md
-/ci-cd
-.dockerignore
+# ignore everything
+*
+
+# add startup script
+!entrypoint.sh
+
+# add go dependencies
+!go.mod
+!go.sum
+
+# add application code
+!cmd/
+!conf/
+!internal/
+!pkg/
+!test/
