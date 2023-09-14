@@ -22,7 +22,7 @@ $ make test
 
 ## Image build
 
-The image is build and published on the Hub at https://hub.docker.com/r/tumblr/k8s-sidecar-injector/. See [/docs/deployment.md](/docs/deployment.md) for how to run this in Kubernetes.
+The image is build and published on the Hub at https://hub.docker.com/r/riege/k8s-sidecar-injector/. See [/docs/deployment.md](/docs/deployment.md) for how to run this in Kubernetes.
 
 ```
 $ make docker

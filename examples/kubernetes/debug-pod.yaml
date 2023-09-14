@@ -4,7 +4,7 @@ metadata:
   name: debian-debug
   namespace: default
   annotations:
-    injector.tumblr.com/request: test1
+    injector.riege.com/request: test1
 spec:
   containers:
   - image: debian:jessie

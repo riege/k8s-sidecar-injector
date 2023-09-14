@@ -289,8 +289,8 @@ func TestLoadConfig(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if c.AnnotationNamespace != "injector.tumblr.com" {
-		t.Fatalf("expected %s AnnotationNamespace but got %s", "injector.tumblr.com", c.AnnotationNamespace)
+	if c.AnnotationNamespace != "injector.riege.com" {
+		t.Fatalf("expected %s AnnotationNamespace but got %s", "injector.riege.com", c.AnnotationNamespace)
 	}
 	if len(c.Injections) != expectedNumInjectionsConfig {
 		t.Fatalf("expected %d Injections loaded but got %d", expectedNumInjectionsConfig, len(c.Injections))

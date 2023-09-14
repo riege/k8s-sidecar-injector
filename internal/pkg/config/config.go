@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	annotationNamespaceDefault = "injector.tumblr.com"
+	annotationNamespaceDefault = "injector.riege.com"
 	defaultVersion             = "latest"
 )
 
@@ -80,7 +80,7 @@ func (c *InjectionConfig) String() string {
 
 // Version returns the parsed version of this injection config. If no version is specified,
 // "latest" is returned. The version is extracted from the request annotation, i.e.
-// injector.tumblr.com/request: my-sidecar:1.2, where "1.2" is the version.
+// injector.riege.com/request: my-sidecar:1.2, where "1.2" is the version.
 func (c *InjectionConfig) Version() string {
 	if c.version == "" {
 		return defaultVersion

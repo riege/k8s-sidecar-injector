@@ -4,12 +4,12 @@ Just some random notes about the design of the sidecar injector
 
 ## Mixin Injections
 
-On the note of why the `k8s-sidecar-injector` does not support multiple injections (aka "mixin" injections), https://github.com/tumblr/k8s-sidecar-injector/issues/17 articulates my thought process during design fairly well. Copying the body of the issue for posterity:
+On the note of why the `k8s-sidecar-injector` does not support multiple injections (aka "mixin" injections), https://github.com/riege/k8s-sidecar-injector/issues/17 articulates my thought process during design fairly well. Copying the body of the issue for posterity:
 
 ### Q
 
 > Hi, I've been testing your sidecar-injector and just wonder if there is a way to request more than one sidecar injection configurations?
-> Multiple annotation "injector.tumblr.com/request" with request assigned to the different names won't raise an error but only the last injection will be applied.
+> Multiple annotation "injector.riege.com/request" with request assigned to the different names won't raise an error but only the last injection will be applied.
 
 ### A
 

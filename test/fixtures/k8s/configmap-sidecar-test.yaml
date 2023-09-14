@@ -5,7 +5,7 @@ metadata:
   name: test-injectionconfig1
   namespace: default
 data:
-  test-tumblr1: |
+  test-riege1: |
     name: sidecar-test
     env:
       - name: DATACENTER
