@@ -10,7 +10,7 @@ import (
 
 	"github.com/riege/k8s-sidecar-injector/internal/pkg/config"
 	testhelper "github.com/riege/k8s-sidecar-injector/internal/pkg/testing"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 	"k8s.io/api/core/v1"
 )
 
