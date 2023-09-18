@@ -1,14 +1,16 @@
 # k8s-sidecar-injector
 
-Uses MutatingAdmissionWebhook in Kubernetes to inject sidecars into new deployments at resource creation time
+Uses MutatingAdmissionWebhook in Kubernetes to inject sidecars into new deployments at resource creation time.
 
 ## What is this?
 
-At Riege, we run some containers that have complicated sidecar setups. A kubernetes pod may run 5+ other containers, with some associated volumes and environment variables. It became clear quickly that keeping these sidecars in line would become an operational hassle; making sure every service uses the correct version of each dependency, updating global environment variable sets as configurations in our DCs change, etc.
+The Riege engineering staff has forked the k8s-sidecar-injector repository from Tumblr and taken it into their own maintenance.
 
-To help solve this, we wrote the `k8s-sidecar-injector`. It is a small service that runs in each Kubernetes cluster, and listens to the Kubernetes API via webhooks. For each pod creation, the injector gets a (mutating admission) webhook, asking whether or not to allow the pod launch, and if allowed, what changes we would like to make to it. For pods that have special annotations on them (i.e. `injector.riege.com/request=logger:v1`), we rewrite the pod configuration to include the containers, volumes, volume mounts, host aliases, init-containers and environment variables defined in the sidecar `logger:v1`'s configuration.
+The original repository can be found here: <https://github.com/tumblr/k8s-sidecar-injector>
 
-This enabled us to keep sane, centralized configuration for oft-used, but infrequently cared about configuration for our sidecars.
+k8s-sidecar-injector is a small service that runs in each Kubernetes cluster, and listens to the Kubernetes API via webhooks. For each pod creation, the injector gets a (mutating admission) webhook, asking whether or not to allow the pod launch, and if allowed, what changes we would like to make to it. For pods that have special annotations on them (i.e. `injector.riege.com/request=logger:v1`), we rewrite the pod configuration to include the containers, volumes, volume mounts, host aliases, init-containers and environment variables defined in the sidecar `logger:v1`'s configuration.
+
+We are currently using the software to add obeservation sidecars to our deployments.
 
 ## Configuration
 
@@ -55,8 +57,8 @@ See [/docs/deployment.md](/docs/deployment.md) for how to run this in Kubernetes
 
 This needs some special configuration surrounding the TLS certs, but if you have already read [docs/configuration.md](./docs/configuration.md), you can run this manually with:
 
-```bash
-./bin/k8s-sidecar-injector --tls-port=9000 --config-directory=conf/ --tls-cert-file="${TLS_CERT_FILE}" --tls-key-file="${TLS_KEY_FILE}"
+```shell
+bin/cmd --tls-port=9000 --config-directory=conf/ --tls-cert-file="${TLS_CERT_FILE}" --tls-key-file="${TLS_KEY_FILE}"
 ```
 
 *NOTE*: this is not a supported method of running in production. You are highly encouraged to read [docs/deployment.md](./docs/deployment.md) to deploy this to Kubernetes in The Supported Way.
