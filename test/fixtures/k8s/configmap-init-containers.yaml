@@ -5,7 +5,7 @@ metadata:
   name: test-init-containers
   namespace: default
 data:
-  test-tumblr1: |
+  test-riege1: |
     name: init-containers
     initContainers:
       - name: init-container-1

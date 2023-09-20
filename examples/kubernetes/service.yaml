@@ -10,8 +10,8 @@ spec:
   type: ClusterIP
   # NOTE(gabe): because of how MutatingWebhookConfigurations work, we MUST set this to have a clusterip
   # to avoid the thiccc chains of
-  # W0802 14:53:36.704545       1 admission.go:253] Failed calling webhook, failing open injector.tumblr.com: failed calling admission webhook "injector.tumblr.com": Post https://k8s-sidecar-injector-prod.sre-sys.svc:443/mutate: cannot route to service with ClusterIP "None"
-  # E0802 14:53:36.704610       1 admission.go:254] failed calling admission webhook "injector.tumblr.com": Post https://k8s-sidecar-injector-prod.sre-sys.svc:443/mutate: cannot route to service with ClusterIP "None"
+  # W0802 14:53:36.704545       1 admission.go:253] Failed calling webhook, failing open injector.riege.com: failed calling admission webhook "injector.riege.com": Post https://k8s-sidecar-injector-prod.sre-sys.svc:443/mutate: cannot route to service with ClusterIP "None"
+  # E0802 14:53:36.704610       1 admission.go:254] failed calling admission webhook "injector.riege.com": Post https://k8s-sidecar-injector-prod.sre-sys.svc:443/mutate: cannot route to service with ClusterIP "None"
   #clusterIP: None
   ports:
   - name: https

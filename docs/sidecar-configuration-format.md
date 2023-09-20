@@ -1,6 +1,7 @@
 # Sidecar Configuration Format
 
 Config is can be loaded from 2 sources:
+
 * `--config-directory`: load all YAML configs that define a sidecar configuration
 * Kubernetes ConfigMaps: `--configmap-labels` and `--configmap-namespace` controls how the injector finds ConfigMaps to load sidecar configurations from
 
@@ -10,19 +11,19 @@ A sidecar configuration looks like:
 ---
 # sidecar configs are identified by a requesting
 # annotation, like:
-# "injector.tumblr.com/request=tumblr-php"
-# the "name: tumblr-php" must match a configuration below; 
+# "injector.riege.com/request=riege-php"
+# the "name: riege-php" must match a configuration below;
 
 # "name" identifies this sidecar uniquely to the injector. NOTE: it is an error to load
 # 2 configuration with the same name! You may include version information in the name to disambiguate
 # between newer versions of the same sidecar. For example:
 #   name: my-sidecar:v1.2
-# indicates "my-sidecar" is version "1.2". A request for `injector.tumblr.com/request: my-sidecar:v1.2`
+# indicates "my-sidecar" is version "1.2". A request for `injector.riege.com/request: my-sidecar:v1.2`
 # will return this configuration. If the version information is omitted, "latest" is assumed.
 # `name: "test"` implies `name: test:latest`.
-# * `injector.tumblr.com/request: my-sidecar` => `my-sidecar:latest`
-# * `injector.tumblr.com/request: my-sidecar:latest` => `my-sidecar:latest`
-# * `injector.tumblr.com/request: my-sidecar:v1.2` => `my-sidecar:v1.2`
+# * `injector.riege.com/request: my-sidecar` => `my-sidecar:latest`
+# * `injector.riege.com/request: my-sidecar:latest` => `my-sidecar:latest`
+# * `injector.riege.com/request: my-sidecar:v1.2` => `my-sidecar:v1.2`
 name: "test:v1.2"
 
 # Each InjectionConfig is a struct that adheres to kubernetes' volume and containers
@@ -104,7 +105,7 @@ initContainers:
 In order for the injector to know about a sidecar configuration, you need to either give it a yaml file to describe the sidecar, or create ConfigMaps in Kubernetes (that contain t  he YAML config for the sidecar).
 
 1. Create a new InjectionConfiguration `yaml`
-  1. Specify your `name:`. This is what you will request with `injector.tumblr.com/request=$name`
-  2. Fill in the `containers`, `volumes`, `volumeMounts`, `hostAliases`, `initContainers`, `serviceAccountName`, and `env` fields with your configuration you want injected
+    1. Specify your `name:`. This is what you will request with `injector.riege.com/request=$name`
+    2. Fill in the `containers`, `volumes`, `volumeMounts`, `hostAliases`, `initContainers`, `serviceAccountName`, and `env` fields with your configuration you want injected
 2. Either bake your yaml into your Docker image you run (in `--config-directory=conf/`), or configure it as a ConfigMap in your k8s cluster. See [/docs/configmaps.md](/docs/configmaps.md) for information on how to configure a ConfigMap.
-3. Deploy a pod with annotation `injector.tumblr.com/request=$name`!
+3. Deploy a pod with annotation `injector.riege.com/request=$name`!

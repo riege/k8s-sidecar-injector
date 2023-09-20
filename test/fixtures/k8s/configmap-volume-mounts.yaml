@@ -5,7 +5,7 @@ metadata:
   name: test-volume-mounts
   namespace: default
 data:
-  test-tumblr1: |
+  test-riege1: |
     name: volume-mounts
     volumeMounts:
       - name: test-vol

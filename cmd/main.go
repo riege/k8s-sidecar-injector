@@ -62,7 +62,7 @@ func main() {
 	flag.StringVar(&parameters.CertFile, "tls-cert-file", "/var/lib/secrets/cert.pem", "File containing the x509 Certificate for HTTPS.")
 	flag.StringVar(&parameters.KeyFile, "tls-key-file", "/var/lib/secrets/cert.key", "File containing the x509 private key to --tls-cert-file.")
 	flag.StringVar(&parameters.ConfigDirectory, "config-directory", "conf/", "Config directory (will load all .yaml files in this directory)")
-	flag.StringVar(&parameters.AnnotationNamespace, "annotation-namespace", "injector.tumblr.com", "Override the AnnotationNamespace")
+	flag.StringVar(&parameters.AnnotationNamespace, "annotation-namespace", "injector.riege.com", "Override the AnnotationNamespace")
 	flag.StringVar(&watcherConfig.Namespace, "configmap-namespace", "", "Namespace to search for ConfigMaps to load Injection Configs from (default: current namespace)")
 	flag.Var(&cmWatcherLabels, "configmap-labels", "Label pairs used to discover ConfigMaps in Kubernetes. These should be key1=value[,key2=val2,...]")
 	flag.StringVar(&watcherConfig.MasterURL, "master-url", "", "Kubernetes master URL (used for running outside of the cluster)")

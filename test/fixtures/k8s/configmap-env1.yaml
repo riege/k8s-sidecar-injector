@@ -5,7 +5,7 @@ metadata:
   name: test-injectionconfig1
   namespace: default
 data:
-  test-tumblr1: |
+  test-riege1: |
     name: env1
     env:
       - name: FOO_BAR
