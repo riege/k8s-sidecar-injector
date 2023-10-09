@@ -9,7 +9,7 @@ RUN go test ./...
 RUN go build -v -o /usr/local/bin/ ./...
 
 
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.2-750
+FROM registry.access.redhat.com/ubi9/ubi-minimal:9.2-750.1696515534
 
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE $TLS_PORT $LIFECYCLE_PORT
