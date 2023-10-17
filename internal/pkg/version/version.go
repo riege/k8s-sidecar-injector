@@ -1,4 +1,4 @@
-// Package version has variables set at build time by the Makefile
+// Package version has variables set at build time
 package version
 
 var (
