@@ -1,4 +1,4 @@
-FROM golang:1.21.1 AS build
+FROM golang:1.21.3 AS build
 
 WORKDIR /go/src/k8s-sidecar-injector
 
@@ -22,7 +22,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /k8s-sidecar-injector \
     -X '${PACKAGE}/internal/pkg/version.Package=${PACKAGE}' \
     " ./cmd
 
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.2-750
+FROM registry.access.redhat.com/ubi9/ubi-minimal:9.2-750.1696515534
 
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE $TLS_PORT $LIFECYCLE_PORT
